@@ -31,7 +31,6 @@ private:
             msg.header.stamp = this->now();
             msg.header.frame_id = "imu_link";
             
-            // Convert g to m/s^2 for standard ROS units
             msg.linear_acceleration.x = x * 9.80665;
             msg.linear_acceleration.y = y * 9.80665;
             msg.linear_acceleration.z = z * 9.80665;

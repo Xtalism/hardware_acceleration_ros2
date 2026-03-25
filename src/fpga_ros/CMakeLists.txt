@@ -10,9 +10,13 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
-set(PROGRAMS
+set(CPP_PROGRAMS
 serial_com
 adxl345_fpga_pub
+)
+
+set(PY_SCRIPTS
+  visualize_gsensor
 )
 
 set(DEPENDENCIES
@@ -27,7 +31,7 @@ target_include_directories(adxl345_fpga_lib PUBLIC
   $<INSTALL_INTERFACE:include>
 )
 
-foreach(PROGRAM ${PROGRAMS})
+foreach(PROGRAM ${CPP_PROGRAMS})
     add_executable(${PROGRAM} src/${PROGRAM}.cpp)
 
     target_include_directories(${PROGRAM} PUBLIC
@@ -39,6 +43,12 @@ foreach(PROGRAM ${PROGRAMS})
     install(TARGETS ${PROGRAM} DESTINATION lib/${PROJECT_NAME})
 endforeach()
 
+foreach(script ${PY_SCRIPTS})
+  install(PROGRAMS ${PROJECT_NAME}/${script}.py
+    DESTINATION lib/${PROJECT_NAME}
+    RENAME ${script}
+  )
+endforeach()
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
