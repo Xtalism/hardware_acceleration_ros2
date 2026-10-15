@@ -1,0 +1,42 @@
+# DE0-Nano: LD19 lidar (UART) -> UDP over a LAN8720 RMII PHY
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE22F17C6
+set_global_assignment -name TOP_LEVEL_ENTITY ld19_udp_top
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
+
+set_global_assignment -name VERILOG_FILE ld19_udp_top.v
+set_global_assignment -name VERILOG_FILE uart_rx.v
+set_global_assignment -name VERILOG_FILE ld19_packet.v
+set_global_assignment -name VERILOG_FILE ld19_frame.v
+set_global_assignment -name VERILOG_FILE ../udp_tx/eth_tx.v
+set_global_assignment -name VERILOG_FILE ../udp_tx/crc32.v
+set_global_assignment -name SDC_FILE ld19_udp.sdc
+
+# LAN8720 module on JP1 (GPIO_0): pin 3 clock, 2 TX1, 4 TX0, 6 TX_EN
+set_location_assignment PIN_B8 -to i_clk
+set_location_assignment PIN_C3 -to o_eth_data[0]
+set_location_assignment PIN_D3 -to o_eth_data[1]
+set_location_assignment PIN_A3 -to o_eth_tx_en
+
+# LD19 pin 1 (Tx, 3.3 V) on JP1 pin 5 (GPIO_02)
+set_location_assignment PIN_A2 -to i_lidar_rx
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to i_lidar_rx
+
+set_location_assignment PIN_A15 -to o_led[0]
+set_location_assignment PIN_A13 -to o_led[1]
+set_location_assignment PIN_B13 -to o_led[2]
+set_location_assignment PIN_A11 -to o_led[3]
+set_location_assignment PIN_D1 -to o_led[4]
+set_location_assignment PIN_F3 -to o_led[5]
+set_location_assignment PIN_B1 -to o_led[6]
+set_location_assignment PIN_L3 -to o_led[7]
+
+set_global_assignment -name LAST_QUARTUS_VERSION "25.1std.0 Lite Edition"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top

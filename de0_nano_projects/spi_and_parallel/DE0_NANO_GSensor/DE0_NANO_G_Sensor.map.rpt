@@ -1,5 +1,5 @@
 Analysis & Synthesis report for DE0_NANO_G_Sensor
-Fri Mar  6 14:35:45 2026
+Wed Mar 25 15:25:46 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -14,18 +14,22 @@ Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis IP Cores Summary
-  9. Registers Removed During Synthesis
- 10. General Register Statistics
- 11. Inverted Register Statistics
- 12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Parameter Settings for User Entity Instance: spipll:u_spipll|altpll:altpll_component
- 14. Parameter Settings for User Entity Instance: spi_ee_config:u_spi_ee_config
- 15. Parameter Settings for User Entity Instance: spi_ee_config:u_spi_ee_config|spi_controller:u_spi_controller
- 16. altpll Parameter Settings by Entity Instance
- 17. Post-Synthesis Netlist Statistics for Top Partition
- 18. Elapsed Time Per Partition
- 19. Analysis & Synthesis Messages
- 20. Analysis & Synthesis Suppressed Messages
+  9. State Machine - |DE0_NANO_G_Sensor|uart_rx_ld19:u_lidar_uart|state
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: spipll:u_spipll|altpll:altpll_component
+ 16. Parameter Settings for User Entity Instance: spi_ee_config:u_spi_ee_config
+ 17. Parameter Settings for User Entity Instance: spi_ee_config:u_spi_ee_config|spi_controller:u_spi_controller
+ 18. Parameter Settings for User Entity Instance: uart_rx_ld19:u_lidar_uart
+ 19. altpll Parameter Settings by Entity Instance
+ 20. Port Connectivity Checks: "uart_rx_ld19:u_lidar_uart"
+ 21. Post-Synthesis Netlist Statistics for Top Partition
+ 22. Elapsed Time Per Partition
+ 23. Analysis & Synthesis Messages
+ 24. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -52,16 +56,16 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Mar  6 14:35:45 2026           ;
+; Analysis & Synthesis Status        ; Successful - Wed Mar 25 15:25:46 2026           ;
 ; Quartus Prime Version              ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                      ; DE0_NANO_G_Sensor                               ;
 ; Top-level Entity Name              ; DE0_NANO_G_Sensor                               ;
 ; Family                             ; Cyclone IV E                                    ;
-; Total logic elements               ; 383                                             ;
-;     Total combinational functions  ; 251                                             ;
+; Total logic elements               ; 384                                             ;
+;     Total combinational functions  ; 252                                             ;
 ;     Dedicated logic registers      ; 281                                             ;
 ; Total registers                    ; 281                                             ;
-; Total pins                         ; 29                                              ;
+; Total pins                         ; 30                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -168,31 +172,33 @@ on the Quartus Prime software download page.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-16        ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                          ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                      ; Library ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------+---------+
-; v/rpi_spi_interface.v            ; yes             ; User Verilog HDL File        ; /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/rpi_spi_interface.v      ;         ;
-; v/rpi_parallel_interface.v       ; yes             ; User Verilog HDL File        ; /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/rpi_parallel_interface.v ;         ;
-; v/spi_param.h                    ; yes             ; User File                    ; /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/spi_param.h              ;         ;
-; v/spi_ee_config.v                ; yes             ; User Verilog HDL File        ; /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/spi_ee_config.v          ;         ;
-; v/spi_controller.v               ; yes             ; User Verilog HDL File        ; /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/spi_controller.v         ;         ;
-; v/reset_delay.v                  ; yes             ; User Verilog HDL File        ; /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/reset_delay.v            ;         ;
-; v/led_driver.v                   ; yes             ; User Verilog HDL File        ; /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/led_driver.v             ;         ;
-; DE0_NANO_G_Sensor.v              ; yes             ; User Verilog HDL File        ; /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v        ;         ;
-; v/spipll.v                       ; yes             ; User Wizard-Generated File   ; /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/spipll.v                 ;         ;
-; altpll.tdf                       ; yes             ; Megafunction                 ; /opt/altera_lite/25.1std/quartus/libraries/megafunctions/altpll.tdf                               ;         ;
-; aglobal251.inc                   ; yes             ; Megafunction                 ; /opt/altera_lite/25.1std/quartus/libraries/megafunctions/aglobal251.inc                           ;         ;
-; stratix_pll.inc                  ; yes             ; Megafunction                 ; /opt/altera_lite/25.1std/quartus/libraries/megafunctions/stratix_pll.inc                          ;         ;
-; stratixii_pll.inc                ; yes             ; Megafunction                 ; /opt/altera_lite/25.1std/quartus/libraries/megafunctions/stratixii_pll.inc                        ;         ;
-; cycloneii_pll.inc                ; yes             ; Megafunction                 ; /opt/altera_lite/25.1std/quartus/libraries/megafunctions/cycloneii_pll.inc                        ;         ;
-; db/spipll_altpll.v               ; yes             ; Auto-Generated Megafunction  ; /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/db/spipll_altpll.v         ;         ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------------------------------------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                            ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------+---------+
+; v/lidar_driver.v                 ; yes             ; User Verilog HDL File        ; /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/lidar_driver.v           ;         ;
+; v/rpi_spi_interface.v            ; yes             ; User Verilog HDL File        ; /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/rpi_spi_interface.v      ;         ;
+; v/rpi_parallel_interface.v       ; yes             ; User Verilog HDL File        ; /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/rpi_parallel_interface.v ;         ;
+; v/spi_param.h                    ; yes             ; User File                    ; /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/spi_param.h              ;         ;
+; v/spi_ee_config.v                ; yes             ; User Verilog HDL File        ; /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/spi_ee_config.v          ;         ;
+; v/spi_controller.v               ; yes             ; User Verilog HDL File        ; /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/spi_controller.v         ;         ;
+; v/reset_delay.v                  ; yes             ; User Verilog HDL File        ; /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/reset_delay.v            ;         ;
+; v/led_driver.v                   ; yes             ; User Verilog HDL File        ; /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/led_driver.v             ;         ;
+; DE0_NANO_G_Sensor.v              ; yes             ; User Verilog HDL File        ; /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v        ;         ;
+; v/spipll.v                       ; yes             ; User Wizard-Generated File   ; /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/spipll.v                 ;         ;
+; altpll.tdf                       ; yes             ; Megafunction                 ; /opt/altera_lite/25.1std/quartus/libraries/megafunctions/altpll.tdf                                                     ;         ;
+; aglobal251.inc                   ; yes             ; Megafunction                 ; /opt/altera_lite/25.1std/quartus/libraries/megafunctions/aglobal251.inc                                                 ;         ;
+; stratix_pll.inc                  ; yes             ; Megafunction                 ; /opt/altera_lite/25.1std/quartus/libraries/megafunctions/stratix_pll.inc                                                ;         ;
+; stratixii_pll.inc                ; yes             ; Megafunction                 ; /opt/altera_lite/25.1std/quartus/libraries/megafunctions/stratixii_pll.inc                                              ;         ;
+; cycloneii_pll.inc                ; yes             ; Megafunction                 ; /opt/altera_lite/25.1std/quartus/libraries/megafunctions/cycloneii_pll.inc                                              ;         ;
+; db/spipll_altpll.v               ; yes             ; Auto-Generated Megafunction  ; /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/db/spipll_altpll.v         ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------------------------------+---------+
 
 
 +------------------------------------------------------------------------------+
@@ -200,23 +206,23 @@ on the Quartus Prime software download page.
 +---------------------------------------------+--------------------------------+
 ; Resource                                    ; Usage                          ;
 +---------------------------------------------+--------------------------------+
-; Estimated Total logic elements              ; 383                            ;
+; Estimated Total logic elements              ; 384                            ;
 ;                                             ;                                ;
-; Total combinational functions               ; 251                            ;
+; Total combinational functions               ; 252                            ;
 ; Logic element usage by number of LUT inputs ;                                ;
 ;     -- 4 input functions                    ; 68                             ;
-;     -- 3 input functions                    ; 106                            ;
+;     -- 3 input functions                    ; 107                            ;
 ;     -- <=2 input functions                  ; 77                             ;
 ;                                             ;                                ;
 ; Logic elements by mode                      ;                                ;
-;     -- normal mode                          ; 195                            ;
+;     -- normal mode                          ; 196                            ;
 ;     -- arithmetic mode                      ; 56                             ;
 ;                                             ;                                ;
 ; Total registers                             ; 281                            ;
 ;     -- Dedicated logic registers            ; 281                            ;
 ;     -- I/O registers                        ; 0                              ;
 ;                                             ;                                ;
-; I/O pins                                    ; 29                             ;
+; I/O pins                                    ; 30                             ;
 ;                                             ;                                ;
 ; Embedded Multiplier 9-bit elements          ; 0                              ;
 ;                                             ;                                ;
@@ -225,8 +231,8 @@ on the Quartus Prime software download page.
 ;                                             ;                                ;
 ; Maximum fan-out node                        ; reset_delay:u_reset_delay|oRST ;
 ; Maximum fan-out                             ; 186                            ;
-; Total fan-out                               ; 1835                           ;
-; Average fan-out                             ; 3.10                           ;
+; Total fan-out                               ; 1838                           ;
+; Average fan-out                             ; 3.09                           ;
 +---------------------------------------------+--------------------------------+
 
 
@@ -235,11 +241,11 @@ on the Quartus Prime software download page.
 +------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------+------------------------+--------------+
 ; Compilation Hierarchy Node                           ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                     ; Entity Name            ; Library Name ;
 +------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------+------------------------+--------------+
-; |DE0_NANO_G_Sensor                                   ; 251 (0)             ; 281 (0)                   ; 0           ; 0            ; 0       ; 0         ; 29   ; 0            ; |DE0_NANO_G_Sensor                                                                      ; DE0_NANO_G_Sensor      ; work         ;
+; |DE0_NANO_G_Sensor                                   ; 252 (0)             ; 281 (0)                   ; 0           ; 0            ; 0       ; 0         ; 30   ; 0            ; |DE0_NANO_G_Sensor                                                                      ; DE0_NANO_G_Sensor      ; work         ;
 ;    |led_driver:u_led_driver|                         ; 70 (70)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO_G_Sensor|led_driver:u_led_driver                                              ; led_driver             ; work         ;
 ;    |reset_delay:u_reset_delay|                       ; 22 (22)             ; 22 (22)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO_G_Sensor|reset_delay:u_reset_delay                                            ; reset_delay            ; work         ;
 ;    |rpi_parallel_interface:u_rpi_parallel_interface| ; 29 (29)             ; 63 (63)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO_G_Sensor|rpi_parallel_interface:u_rpi_parallel_interface                      ; rpi_parallel_interface ; work         ;
-;    |rpi_spi_interface:u_rpi_spi_interface|           ; 50 (50)             ; 54 (54)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO_G_Sensor|rpi_spi_interface:u_rpi_spi_interface                                ; rpi_spi_interface      ; work         ;
+;    |rpi_spi_interface:u_rpi_spi|                     ; 51 (51)             ; 54 (54)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO_G_Sensor|rpi_spi_interface:u_rpi_spi                                          ; rpi_spi_interface      ; work         ;
 ;    |spi_ee_config:u_spi_ee_config|                   ; 80 (61)             ; 116 (103)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO_G_Sensor|spi_ee_config:u_spi_ee_config                                        ; spi_ee_config          ; work         ;
 ;       |spi_controller:u_spi_controller|              ; 19 (19)             ; 13 (13)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO_G_Sensor|spi_ee_config:u_spi_ee_config|spi_controller:u_spi_controller        ; spi_controller         ; work         ;
 ;    |spipll:u_spipll|                                 ; 0 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |DE0_NANO_G_Sensor|spipll:u_spipll                                                      ; spipll                 ; work         ;
@@ -258,17 +264,923 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------+--------------+---------+--------------+--------------+------------------------------------+-----------------+
 
 
-+-----------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                            ;
-+--------------------------------------------+--------------------------------------------------+
-; Register name                              ; Reason for Removal                               ;
-+--------------------------------------------+--------------------------------------------------+
-; spi_ee_config:u_spi_ee_config|p2s_data[7]  ; Stuck at GND due to stuck port data_in           ;
-; spi_ee_config:u_spi_ee_config|spi_state    ; Merged with spi_ee_config:u_spi_ee_config|spi_go ;
-; spi_ee_config:u_spi_ee_config|p2s_data[14] ; Stuck at GND due to stuck port data_in           ;
-; spi_ee_config:u_spi_ee_config|p2s_data[13] ; Stuck at VCC due to stuck port data_in           ;
-; Total Number of Removed Registers = 4      ;                                                  ;
-+--------------------------------------------+--------------------------------------------------+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------+
+; State Machine - |DE0_NANO_G_Sensor|uart_rx_ld19:u_lidar_uart|state                                            ;
++--------------------+-------------------+--------------------+--------------------+------------+---------------+
+; Name               ; state.RX_STOP_BIT ; state.RX_DATA_BITS ; state.RX_START_BIT ; state.IDLE ; state.CLEANUP ;
++--------------------+-------------------+--------------------+--------------------+------------+---------------+
+; state.IDLE         ; 0                 ; 0                  ; 0                  ; 0          ; 0             ;
+; state.RX_START_BIT ; 0                 ; 0                  ; 1                  ; 1          ; 0             ;
+; state.RX_DATA_BITS ; 0                 ; 1                  ; 0                  ; 1          ; 0             ;
+; state.RX_STOP_BIT  ; 1                 ; 0                  ; 0                  ; 1          ; 0             ;
+; state.CLEANUP      ; 0                 ; 0                  ; 0                  ; 1          ; 1             ;
++--------------------+-------------------+--------------------+--------------------+------------+---------------+
+
+
++---------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                      ;
++------------------------------------------------------+--------------------------------------------------+
+; Register name                                        ; Reason for Removal                               ;
++------------------------------------------------------+--------------------------------------------------+
+; uart_rx_ld19:u_lidar_uart|rx_data_r                  ; Stuck at VCC due to stuck port data_in           ;
+; uart_rx_ld19:u_lidar_uart|rx_data                    ; Stuck at VCC due to stuck port data_in           ;
+; spi_ee_config:u_spi_ee_config|p2s_data[7]            ; Stuck at GND due to stuck port data_in           ;
+; spi_ee_config:u_spi_ee_config|spi_state              ; Merged with spi_ee_config:u_spi_ee_config|spi_go ;
+; spi_ee_config:u_spi_ee_config|p2s_data[14]           ; Stuck at GND due to stuck port data_in           ;
+; spi_ee_config:u_spi_ee_config|p2s_data[13]           ; Stuck at VCC due to stuck port data_in           ;
+; uart_rx_ld19:u_lidar_uart|state~2                    ; Lost fanout                                      ;
+; uart_rx_ld19:u_lidar_uart|state~3                    ; Lost fanout                                      ;
+; uart_rx_ld19:u_lidar_uart|state.RX_START_BIT         ; Stuck at GND due to stuck port data_in           ;
+; uart_rx_ld19:u_lidar_uart|state.RX_DATA_BITS         ; Stuck at GND due to stuck port data_in           ;
+; uart_rx_ld19:u_lidar_uart|shift_reg[0..5,7]          ; Stuck at GND due to stuck port clock_enable      ;
+; uart_rx_ld19:u_lidar_uart|data_out[5]                ; Stuck at GND due to stuck port data_in           ;
+; uart_rx_ld19:u_lidar_uart|shift_reg[6]               ; Stuck at GND due to stuck port clock_enable      ;
+; uart_rx_ld19:u_lidar_uart|data_out[0..4,7]           ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[5]          ; Stuck at GND due to stuck port data_in           ;
+; uart_rx_ld19:u_lidar_uart|data_out[6]                ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[0..4,6..13] ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[0]             ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[14..21]     ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[1]             ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[22..29]     ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[2]             ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[30..37]     ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[3]             ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[38..45]     ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[4]             ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[46..53]     ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[5]             ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[54..61]     ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[6]             ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[62..69]     ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[7]             ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[70..77]     ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[8]             ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[78..85]     ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[9]             ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[86..93]     ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[10]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[94..101]    ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[11]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[102..109]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[12]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[110..117]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[13]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[118..125]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[14]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[126..133]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[15]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[134..141]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[16]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[142..149]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[17]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[150..157]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[18]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[158..165]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[19]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[166..173]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[20]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[174..181]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[21]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[182..189]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[22]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[190..197]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[23]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[198..205]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[24]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[206..213]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[25]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[214..221]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[26]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[222..229]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[27]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[230..237]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[28]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[238..245]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[29]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[246..253]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[30]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[254..261]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[31]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[262..269]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[32]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[270..277]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[33]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[278..285]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[34]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[286..293]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[35]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[294..301]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[36]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[302..309]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[37]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[310..317]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[38]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[318..325]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[39]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[326..333]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[40]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[334..341]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[41]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[342..349]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[42]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[350..357]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[43]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[358..365]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[44]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[366..373]   ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[45]            ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|lidar_buffer[374,375]    ; Stuck at GND due to stuck port data_in           ;
+; rpi_spi_interface:u_rpi_spi|shift_reg[46..375]       ; Stuck at GND due to stuck port data_in           ;
+; uart_rx_ld19:u_lidar_uart|state.RX_STOP_BIT          ; Stuck at GND due to stuck port data_in           ;
+; uart_rx_ld19:u_lidar_uart|state.IDLE                 ; Stuck at GND due to stuck port data_in           ;
+; uart_rx_ld19:u_lidar_uart|bit_index[0..2]            ; Stuck at GND due to stuck port data_in           ;
+; uart_rx_ld19:u_lidar_uart|data_valid                 ; Stuck at GND due to stuck port data_in           ;
+; uart_rx_ld19:u_lidar_uart|state.CLEANUP              ; Stuck at GND due to stuck port data_in           ;
+; uart_rx_ld19:u_lidar_uart|clk_count[0..15]           ; Stuck at GND due to stuck port data_in           ;
+; Total Number of Removed Registers = 801              ;                                                  ;
++------------------------------------------------------+--------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                    ;
++----------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+; Register name                                ; Reason for Removal        ; Registers Removed due to This Register                                              ;
++----------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+; uart_rx_ld19:u_lidar_uart|rx_data_r          ; Stuck at VCC              ; uart_rx_ld19:u_lidar_uart|rx_data, uart_rx_ld19:u_lidar_uart|shift_reg[5],          ;
+;                                              ; due to stuck port data_in ; uart_rx_ld19:u_lidar_uart|shift_reg[4], uart_rx_ld19:u_lidar_uart|shift_reg[3],     ;
+;                                              ;                           ; uart_rx_ld19:u_lidar_uart|shift_reg[2], uart_rx_ld19:u_lidar_uart|shift_reg[1],     ;
+;                                              ;                           ; uart_rx_ld19:u_lidar_uart|shift_reg[0], uart_rx_ld19:u_lidar_uart|shift_reg[7],     ;
+;                                              ;                           ; uart_rx_ld19:u_lidar_uart|data_out[5], uart_rx_ld19:u_lidar_uart|shift_reg[6],      ;
+;                                              ;                           ; uart_rx_ld19:u_lidar_uart|data_out[4], uart_rx_ld19:u_lidar_uart|data_out[3],       ;
+;                                              ;                           ; uart_rx_ld19:u_lidar_uart|data_out[2], uart_rx_ld19:u_lidar_uart|data_out[1],       ;
+;                                              ;                           ; uart_rx_ld19:u_lidar_uart|data_out[0], uart_rx_ld19:u_lidar_uart|data_out[7],       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[5], uart_rx_ld19:u_lidar_uart|data_out[6], ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[4],                                        ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[3],                                        ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[2],                                        ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[1],                                        ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[0],                                        ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[7],                                        ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[13],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[6],                                        ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[12],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[11],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[10],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[9],                                        ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[8],                                        ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[0],                                           ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[15],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[21],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[14],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[20],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[19],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[18],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[17],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[16],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[1],                                           ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[23],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[29],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[22],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[28],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[27],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[26],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[25],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[24],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[2],                                           ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[31],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[37],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[30],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[36],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[35],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[34],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[33],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[32],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[3],                                           ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[39],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[45],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[38],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[44],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[43],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[42],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[41],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[40],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[4],                                           ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[47],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[53],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[46],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[52],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[51],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[50],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[49],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[48],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[5],                                           ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[55],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[61],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[54],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[60],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[59],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[58],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[57],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[56],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[6],                                           ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[63],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[69],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[62],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[68],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[67],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[66],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[65],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[64],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[7],                                           ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[71],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[77],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[70],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[76],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[75],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[74],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[73],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[72],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[8],                                           ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[79],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[85],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[78],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[84],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[83],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[82],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[81],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[80],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[9],                                           ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[87],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[93],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[86],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[92],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[91],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[90],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[89],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[88],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[10],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[95],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[101],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[94],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[100],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[99],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[98],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[97],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[96],                                       ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[11],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[103],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[109],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[102],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[108],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[107],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[106],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[105],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[104],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[12],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[111],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[117],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[110],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[116],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[115],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[114],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[113],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[112],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[13],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[119],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[125],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[118],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[124],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[123],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[122],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[121],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[120],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[14],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[127],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[133],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[126],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[132],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[131],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[130],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[129],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[128],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[15],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[135],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[141],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[134],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[140],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[139],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[138],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[137],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[136],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[16],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[143],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[149],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[142],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[148],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[147],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[146],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[145],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[144],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[17],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[151],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[157],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[150],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[156],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[155],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[154],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[153],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[152],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[18],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[159],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[165],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[158],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[164],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[163],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[162],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[161],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[160],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[19],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[167],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[173],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[166],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[172],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[171],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[170],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[169],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[168],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[20],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[175],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[181],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[174],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[180],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[179],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[178],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[177],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[176],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[21],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[183],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[189],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[182],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[188],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[187],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[186],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[185],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[184],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[22],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[191],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[197],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[190],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[196],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[195],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[194],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[193],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[192],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[23],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[199],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[205],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[198],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[204],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[203],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[202],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[201],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[200],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[24],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[207],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[213],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[206],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[212],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[211],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[210],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[209],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[208],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[25],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[215],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[221],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[214],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[220],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[219],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[218],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[217],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[216],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[26],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[223],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[229],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[222],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[228],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[227],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[226],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[225],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[224],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[27],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[231],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[237],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[230],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[236],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[235],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[234],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[233],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[232],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[28],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[239],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[245],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[238],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[244],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[243],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[242],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[241],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[240],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[29],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[247],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[253],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[246],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[252],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[251],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[250],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[249],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[248],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[30],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[255],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[261],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[254],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[260],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[259],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[258],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[257],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[256],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[31],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[263],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[269],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[262],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[268],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[267],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[266],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[265],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[264],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[32],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[271],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[277],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[270],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[276],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[275],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[274],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[273],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[272],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[33],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[279],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[285],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[278],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[284],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[283],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[282],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[281],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[280],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[34],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[287],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[293],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[286],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[292],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[291],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[290],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[289],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[288],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[35],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[295],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[301],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[294],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[300],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[299],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[298],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[297],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[296],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[36],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[303],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[309],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[302],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[308],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[307],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[306],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[305],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[304],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[37],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[311],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[317],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[310],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[316],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[315],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[314],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[313],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[312],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[38],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[319],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[325],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[318],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[324],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[323],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[322],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[321],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[320],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[39],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[327],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[333],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[326],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[332],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[331],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[330],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[329],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[328],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[40],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[335],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[341],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[334],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[340],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[339],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[338],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[337],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[336],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[41],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[343],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[349],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[342],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[348],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[347],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[346],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[345],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[344],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[42],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[351],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[357],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[350],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[356],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[355],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[354],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[353],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[352],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[43],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[359],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[365],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[358],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[364],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[363],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[362],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[361],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[360],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[44],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[367],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[373],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[366],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[372],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[371],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[370],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[369],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[368],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[45],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[375],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|lidar_buffer[374],                                      ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[46],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[47],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[48],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[49],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[50],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[51],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[52],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[53],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[54],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[55],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[56],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[57],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[58],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[59],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[60],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[61],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[62],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[63],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[64],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[65],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[66],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[67],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[68],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[69],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[70],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[71],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[72],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[73],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[74],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[75],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[76],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[77],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[78],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[79],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[80],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[81],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[82],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[83],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[84],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[85],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[86],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[87],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[88],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[89],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[90],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[91],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[92],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[93],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[94],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[95],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[96],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[97],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[98],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[99],                                          ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[100],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[101],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[102],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[103],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[104],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[105],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[106],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[107],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[108],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[109],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[110],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[111],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[112],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[113],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[114],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[115],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[116],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[117],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[118],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[119],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[120],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[121],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[122],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[123],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[124],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[125],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[126],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[127],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[128],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[129],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[130],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[131],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[132],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[133],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[134],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[135],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[136],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[137],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[138],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[139],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[140],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[141],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[142],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[143],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[144],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[145],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[146],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[147],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[148],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[149],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[150],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[151],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[152],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[153],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[154],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[155],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[156],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[157],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[158],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[159],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[160],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[161],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[162],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[163],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[164],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[165],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[166],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[167],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[168],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[169],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[170],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[171],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[172],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[173],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[174],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[175],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[176],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[177],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[178],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[179],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[180],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[181],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[182],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[183],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[184],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[185],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[186],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[187],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[188],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[189],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[190],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[191],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[192],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[193],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[194],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[195],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[196],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[197],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[198],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[199],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[200],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[201],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[202],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[203],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[204],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[205],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[206],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[207],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[208],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[209],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[210],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[211],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[212],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[213],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[214],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[215],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[216],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[217],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[218],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[219],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[220],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[221],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[222],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[223],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[224],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[225],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[226],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[227],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[228],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[229],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[230],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[231],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[232],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[233],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[234],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[235],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[236],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[237],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[238],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[239],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[240],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[241],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[242],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[243],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[244],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[245],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[246],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[247],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[248],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[249],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[250],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[251],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[252],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[253],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[254],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[255],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[256],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[257],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[258],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[259],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[260],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[261],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[262],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[263],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[264],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[265],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[266],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[267],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[268],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[269],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[270],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[271],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[272],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[273],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[274],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[275],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[276],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[277],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[278],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[279],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[280],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[281],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[282],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[283],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[284],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[285],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[286],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[287],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[288],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[289],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[290],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[291],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[292],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[293],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[294],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[295],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[296],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[297],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[298],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[299],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[300],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[301],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[302],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[303],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[304],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[305],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[306],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[307],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[308],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[309],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[310],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[311],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[312],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[313],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[314],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[315],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[316],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[317],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[318],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[319],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[320],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[321],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[322],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[323],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[324],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[325],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[326],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[327],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[328],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[329],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[330],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[331],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[332],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[333],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[334],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[335],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[336],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[337],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[338],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[339],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[340],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[341],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[342],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[343],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[344],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[345],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[346],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[347],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[348],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[349],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[350],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[351],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[352],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[353],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[354],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[355],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[356],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[357],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[358],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[359],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[360],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[361],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[362],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[363],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[364],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[365],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[366],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[367],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[368],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[369],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[370],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[371],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[372],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[373],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[374],                                         ;
+;                                              ;                           ; rpi_spi_interface:u_rpi_spi|shift_reg[375], uart_rx_ld19:u_lidar_uart|data_valid,   ;
+;                                              ;                           ; uart_rx_ld19:u_lidar_uart|clk_count[0], uart_rx_ld19:u_lidar_uart|clk_count[1],     ;
+;                                              ;                           ; uart_rx_ld19:u_lidar_uart|clk_count[2], uart_rx_ld19:u_lidar_uart|clk_count[5],     ;
+;                                              ;                           ; uart_rx_ld19:u_lidar_uart|clk_count[8], uart_rx_ld19:u_lidar_uart|clk_count[9],     ;
+;                                              ;                           ; uart_rx_ld19:u_lidar_uart|clk_count[10], uart_rx_ld19:u_lidar_uart|clk_count[11],   ;
+;                                              ;                           ; uart_rx_ld19:u_lidar_uart|clk_count[12], uart_rx_ld19:u_lidar_uart|clk_count[13],   ;
+;                                              ;                           ; uart_rx_ld19:u_lidar_uart|clk_count[14], uart_rx_ld19:u_lidar_uart|clk_count[15]    ;
+; uart_rx_ld19:u_lidar_uart|state.RX_START_BIT ; Stuck at GND              ; uart_rx_ld19:u_lidar_uart|state.IDLE, uart_rx_ld19:u_lidar_uart|clk_count[3],       ;
+;                                              ; due to stuck port data_in ; uart_rx_ld19:u_lidar_uart|clk_count[7]                                              ;
+; uart_rx_ld19:u_lidar_uart|state.RX_DATA_BITS ; Stuck at GND              ; uart_rx_ld19:u_lidar_uart|clk_count[4], uart_rx_ld19:u_lidar_uart|clk_count[6]      ;
+;                                              ; due to stuck port data_in ;                                                                                     ;
+; uart_rx_ld19:u_lidar_uart|state.RX_STOP_BIT  ; Stuck at GND              ; uart_rx_ld19:u_lidar_uart|state.CLEANUP                                             ;
+;                                              ; due to stuck port data_in ;                                                                                     ;
++----------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -281,7 +1193,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Number of registers using Synchronous Load   ; 8     ;
 ; Number of registers using Asynchronous Clear ; 201   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 237   ;
+; Number of registers using Clock Enable       ; 236   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -297,9 +1209,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; spi_ee_config:u_spi_ee_config|spi_controller:u_spi_controller|spi_count[0] ; 11      ;
 ; spi_ee_config:u_spi_ee_config|spi_controller:u_spi_controller|spi_count[2] ; 5       ;
 ; spi_ee_config:u_spi_ee_config|spi_controller:u_spi_controller|spi_count[1] ; 5       ;
-; rpi_spi_interface:u_rpi_spi_interface|cs_sync[2]                           ; 50      ;
-; rpi_spi_interface:u_rpi_spi_interface|cs_sync[1]                           ; 1       ;
-; rpi_spi_interface:u_rpi_spi_interface|cs_sync[0]                           ; 1       ;
+; rpi_spi_interface:u_rpi_spi|cs_sync[2]                                     ; 50      ;
+; rpi_spi_interface:u_rpi_spi|cs_sync[1]                                     ; 1       ;
+; rpi_spi_interface:u_rpi_spi|cs_sync[0]                                     ; 1       ;
 ; Total number of inverted registers = 9                                     ;         ;
 +----------------------------------------------------------------------------+---------+
 
@@ -309,14 +1221,16 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------+
-; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |DE0_NANO_G_Sensor|led_driver:u_led_driver|int2_count[17]                          ;
-; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |DE0_NANO_G_Sensor|spi_ee_config:u_spi_ee_config|read_idle_count[6]                ;
+; 3:1                ; 23 bits   ; 46 LEs        ; 23 LEs               ; 23 LEs                 ; Yes        ; |DE0_NANO_G_Sensor|led_driver:u_led_driver|int2_count[8]                           ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 15 LEs               ; 15 LEs                 ; Yes        ; |DE0_NANO_G_Sensor|spi_ee_config:u_spi_ee_config|read_idle_count[14]               ;
 ; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |DE0_NANO_G_Sensor|rpi_parallel_interface:u_rpi_parallel_interface|byte_counter[0] ;
-; 3:1                ; 46 bits   ; 92 LEs        ; 46 LEs               ; 46 LEs                 ; Yes        ; |DE0_NANO_G_Sensor|rpi_spi_interface:u_rpi_spi_interface|shift_reg[34]             ;
-; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE0_NANO_G_Sensor|rpi_parallel_interface:u_rpi_parallel_interface|oRP_DATA[0]     ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; Yes        ; |DE0_NANO_G_Sensor|spi_ee_config:u_spi_ee_config|p2s_data[13]                      ;
-; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE0_NANO_G_Sensor|spi_ee_config:u_spi_ee_config|p2s_data[12]                      ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE0_NANO_G_Sensor|led_driver:u_led_driver|oLED[7]                                 ;
+; 3:1                ; 422 bits  ; 844 LEs       ; 422 LEs              ; 422 LEs                ; Yes        ; |DE0_NANO_G_Sensor|rpi_spi_interface:u_rpi_spi|shift_reg[174]                      ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; Yes        ; |DE0_NANO_G_Sensor|rpi_parallel_interface:u_rpi_parallel_interface|oRP_DATA[3]     ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 2 LEs                ; 6 LEs                  ; Yes        ; |DE0_NANO_G_Sensor|spi_ee_config:u_spi_ee_config|p2s_data[15]                      ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE0_NANO_G_Sensor|spi_ee_config:u_spi_ee_config|p2s_data[8]                       ;
+; 6:1                ; 16 bits   ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; Yes        ; |DE0_NANO_G_Sensor|uart_rx_ld19:u_lidar_uart|clk_count[14]                         ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE0_NANO_G_Sensor|led_driver:u_led_driver|oLED[0]                                 ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |DE0_NANO_G_Sensor|uart_rx_ld19:u_lidar_uart|bit_index                             ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |DE0_NANO_G_Sensor|led_driver:u_led_driver|oLED[4]                                 ;
 ; 6:1                ; 3 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |DE0_NANO_G_Sensor|led_driver:u_led_driver|abs_select_high[1]                      ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------------------------------------------+
@@ -766,6 +1680,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: uart_rx_ld19:u_lidar_uart ;
++----------------+-------+-----------------------------------------------+
+; Parameter Name ; Value ; Type                                          ;
++----------------+-------+-----------------------------------------------+
+; CLKS_PER_BIT   ; 217   ; Signed Integer                                ;
++----------------+-------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-------------------------------------------------------------------------+
 ; altpll Parameter Settings by Entity Instance                            ;
 +-------------------------------+-----------------------------------------+
@@ -783,33 +1707,42 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+-----------------------------------------+
 
 
++-------------------------------------------------------+
+; Port Connectivity Checks: "uart_rx_ld19:u_lidar_uart" ;
++--------+-------+----------+---------------------------+
+; Port   ; Type  ; Severity ; Details                   ;
++--------+-------+----------+---------------------------+
+; rx_pin ; Input ; Info     ; Stuck at VCC              ;
++--------+-------+----------+---------------------------+
+
+
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 29                          ;
+; boundary_port         ; 30                          ;
 ; cycloneiii_ff         ; 281                         ;
-;     CLR               ; 35                          ;
+;     CLR               ; 36                          ;
 ;     CLR SCLR SLD      ; 8                           ;
 ;     ENA               ; 79                          ;
-;     ENA CLR           ; 141                         ;
+;     ENA CLR           ; 140                         ;
 ;     ENA CLR SCLR      ; 17                          ;
 ;     plain             ; 1                           ;
 ; cycloneiii_io_obuf    ; 2                           ;
-; cycloneiii_lcell_comb ; 254                         ;
+; cycloneiii_lcell_comb ; 255                         ;
 ;     arith             ; 56                          ;
 ;         2 data inputs ; 55                          ;
 ;         3 data inputs ; 1                           ;
-;     normal            ; 198                         ;
+;     normal            ; 199                         ;
 ;         1 data inputs ; 8                           ;
 ;         2 data inputs ; 17                          ;
-;         3 data inputs ; 105                         ;
+;         3 data inputs ; 106                         ;
 ;         4 data inputs ; 68                          ;
 ; cycloneiii_pll        ; 1                           ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.30                        ;
-; Average LUT depth     ; 2.02                        ;
+; Average LUT depth     ; 2.03                        ;
 +-----------------------+-----------------------------+
 
 
@@ -818,7 +1751,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -828,33 +1761,36 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Fri Mar  6 14:35:40 2026
+    Info: Processing started: Wed Mar 25 15:25:41 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE0_NANO_G_Sensor -c DE0_NANO_G_Sensor
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 32 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file v/lidar_driver.v
+    Info (12023): Found entity 1: uart_rx_ld19 File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/lidar_driver.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file v/rpi_spi_interface.v
-    Info (12023): Found entity 1: rpi_spi_interface File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/rpi_spi_interface.v Line: 1
+    Info (12023): Found entity 1: rpi_spi_interface File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/rpi_spi_interface.v Line: 1
 Warning (12019): Can't analyze file -- file spipll.v is missing
 Info (12021): Found 1 design units, including 1 entities, in source file v/rpi_parallel_interface.v
-    Info (12023): Found entity 1: rpi_parallel_interface File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/rpi_parallel_interface.v Line: 1
+    Info (12023): Found entity 1: rpi_parallel_interface File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/rpi_parallel_interface.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file v/spi_ee_config.v
-    Info (12023): Found entity 1: spi_ee_config File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/spi_ee_config.v Line: 1
+    Info (12023): Found entity 1: spi_ee_config File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/spi_ee_config.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file v/spi_controller.v
-    Info (12023): Found entity 1: spi_controller File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/spi_controller.v Line: 1
+    Info (12023): Found entity 1: spi_controller File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/spi_controller.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file v/reset_delay.v
-    Info (12023): Found entity 1: reset_delay File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/reset_delay.v Line: 1
+    Info (12023): Found entity 1: reset_delay File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/reset_delay.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file v/led_driver.v
-    Info (12023): Found entity 1: led_driver File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/led_driver.v Line: 1
+    Info (12023): Found entity 1: led_driver File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/led_driver.v Line: 1
+Warning (10238): Verilog Module Declaration warning at DE0_NANO_G_Sensor.v(41): ignored anonymous port(s) indicated by duplicate or dangling comma(s) in the port list for module "DE0_NANO_G_Sensor" File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 41
 Info (12021): Found 1 design units, including 1 entities, in source file DE0_NANO_G_Sensor.v
-    Info (12023): Found entity 1: DE0_NANO_G_Sensor File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 47
+    Info (12023): Found entity 1: DE0_NANO_G_Sensor File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 11
 Info (12021): Found 1 design units, including 1 entities, in source file v/spipll.v
-    Info (12023): Found entity 1: spipll File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/spipll.v Line: 39
+    Info (12023): Found entity 1: spipll File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/spipll.v Line: 39
 Info (12127): Elaborating entity "DE0_NANO_G_Sensor" for the top level hierarchy
-Info (12128): Elaborating entity "reset_delay" for hierarchy "reset_delay:u_reset_delay" File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 127
-Info (12128): Elaborating entity "spipll" for hierarchy "spipll:u_spipll" File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 134
-Info (12128): Elaborating entity "altpll" for hierarchy "spipll:u_spipll|altpll:altpll_component" File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/spipll.v Line: 103
-Info (12130): Elaborated megafunction instantiation "spipll:u_spipll|altpll:altpll_component" File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/spipll.v Line: 103
-Info (12133): Instantiated megafunction "spipll:u_spipll|altpll:altpll_component" with the following parameter: File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/spipll.v Line: 103
+Info (12128): Elaborating entity "reset_delay" for hierarchy "reset_delay:u_reset_delay" File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 101
+Info (12128): Elaborating entity "spipll" for hierarchy "spipll:u_spipll" File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 108
+Info (12128): Elaborating entity "altpll" for hierarchy "spipll:u_spipll|altpll:altpll_component" File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/spipll.v Line: 103
+Info (12130): Elaborated megafunction instantiation "spipll:u_spipll|altpll:altpll_component" File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/spipll.v Line: 103
+Info (12133): Instantiated megafunction "spipll:u_spipll|altpll:altpll_component" with the following parameter: File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/spipll.v Line: 103
     Info (12134): Parameter "bandwidth_type" = "AUTO"
     Info (12134): Parameter "clk0_divide_by" = "25"
     Info (12134): Parameter "clk0_duty_cycle" = "50"
@@ -914,34 +1850,41 @@ Info (12133): Instantiated megafunction "spipll:u_spipll|altpll:altpll_component
     Info (12134): Parameter "port_extclk3" = "PORT_UNUSED"
     Info (12134): Parameter "width_clock" = "5"
 Info (12021): Found 1 design units, including 1 entities, in source file db/spipll_altpll.v
-    Info (12023): Found entity 1: spipll_altpll File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/db/spipll_altpll.v Line: 30
+    Info (12023): Found entity 1: spipll_altpll File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/db/spipll_altpll.v Line: 30
 Info (12128): Elaborating entity "spipll_altpll" for hierarchy "spipll:u_spipll|altpll:altpll_component|spipll_altpll:auto_generated" File: /opt/altera_lite/25.1std/quartus/libraries/megafunctions/altpll.tdf Line: 898
-Info (12128): Elaborating entity "spi_ee_config" for hierarchy "spi_ee_config:u_spi_ee_config" File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 150
-Warning (10230): Verilog HDL assignment warning at spi_ee_config.v(124): truncated value with size 32 to match size of target (15) File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/spi_ee_config.v Line: 124
-Info (12128): Elaborating entity "spi_controller" for hierarchy "spi_ee_config:u_spi_ee_config|spi_controller:u_spi_controller" File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/spi_ee_config.v Line: 70
-Info (12128): Elaborating entity "led_driver" for hierarchy "led_driver:u_led_driver" File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 158
-Warning (10036): Verilog HDL or VHDL warning at led_driver.v(16): object "int2_count_en" assigned a value but never read File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/led_driver.v Line: 16
-Warning (10230): Verilog HDL assignment warning at led_driver.v(54): truncated value with size 32 to match size of target (24) File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/led_driver.v Line: 54
-Info (12128): Elaborating entity "rpi_parallel_interface" for hierarchy "rpi_parallel_interface:u_rpi_parallel_interface" File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 172
-Info (12128): Elaborating entity "rpi_spi_interface" for hierarchy "rpi_spi_interface:u_rpi_spi_interface" File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 185
-Info (13000): Registers with preset signals will power-up high File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/v/led_driver.v Line: 44
+Info (12128): Elaborating entity "spi_ee_config" for hierarchy "spi_ee_config:u_spi_ee_config" File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 124
+Warning (10230): Verilog HDL assignment warning at spi_ee_config.v(124): truncated value with size 32 to match size of target (15) File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/spi_ee_config.v Line: 124
+Info (12128): Elaborating entity "spi_controller" for hierarchy "spi_ee_config:u_spi_ee_config|spi_controller:u_spi_controller" File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/spi_ee_config.v Line: 70
+Info (12128): Elaborating entity "led_driver" for hierarchy "led_driver:u_led_driver" File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 132
+Warning (10036): Verilog HDL or VHDL warning at led_driver.v(16): object "int2_count_en" assigned a value but never read File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/led_driver.v Line: 16
+Warning (10230): Verilog HDL assignment warning at led_driver.v(54): truncated value with size 32 to match size of target (24) File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/led_driver.v Line: 54
+Info (12128): Elaborating entity "rpi_parallel_interface" for hierarchy "rpi_parallel_interface:u_rpi_parallel_interface" File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 146
+Info (12128): Elaborating entity "uart_rx_ld19" for hierarchy "uart_rx_ld19:u_lidar_uart" File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 154
+Warning (10230): Verilog HDL assignment warning at lidar_driver.v(49): truncated value with size 32 to match size of target (16) File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/lidar_driver.v Line: 49
+Warning (10230): Verilog HDL assignment warning at lidar_driver.v(60): truncated value with size 32 to match size of target (3) File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/lidar_driver.v Line: 60
+Warning (10230): Verilog HDL assignment warning at lidar_driver.v(67): truncated value with size 32 to match size of target (16) File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/lidar_driver.v Line: 67
+Warning (10230): Verilog HDL assignment warning at lidar_driver.v(80): truncated value with size 32 to match size of target (16) File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/lidar_driver.v Line: 80
+Info (12128): Elaborating entity "rpi_spi_interface" for hierarchy "rpi_spi_interface:u_rpi_spi" File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 169
+Info (13000): Registers with preset signals will power-up high File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/v/led_driver.v Line: 44
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Info (286030): Timing-Driven Synthesis is running
-Info (144001): Generated suppressed messages file /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/DE0_NANO_G_Sensor.map.smsg
+Info (17049): 2 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/DE0_NANO_G_Sensor.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 2 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "KEY[1]" File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 87
-    Warning (15610): No output dependent on input pin "RP_SPI_MOSI" File: /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 102
-Info (21057): Implemented 415 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 9 input pins
+Warning (21074): Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[1]" File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 54
+    Warning (15610): No output dependent on input pin "RP_SPI_MOSI" File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 69
+    Warning (15610): No output dependent on input pin "RX_LIDAR_PIN" File: /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/DE0_NANO_G_Sensor.v Line: 74
+Info (21057): Implemented 417 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 10 input pins
     Info (21059): Implemented 19 output pins
     Info (21060): Implemented 1 bidirectional pins
-    Info (21061): Implemented 385 logic cells
+    Info (21061): Implemented 386 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 501 megabytes
-    Info: Processing ended: Fri Mar  6 14:35:45 2026
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 14 warnings
+    Info: Peak virtual memory: 588 megabytes
+    Info: Processing ended: Wed Mar 25 15:25:46 2026
     Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:14
 
@@ -949,6 +1892,6 @@ Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in /home/xtalism/DE0-Nano_v.1.2.8_SystemCD/Demonstration/DE0_NANO_GSensor/DE0_NANO_G_Sensor.map.smsg.
+The suppressed messages can be found in /home/xtalism/hardware_acceleration_ros2/de0_nano_projects/spi_and_parallel/DE0_NANO_GSensor/DE0_NANO_G_Sensor.map.smsg.
 
 

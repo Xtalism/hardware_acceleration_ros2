@@ -106,6 +106,10 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RP_SPI_MISO
 set_location_assignment PIN_C3 -to RP_SPI_CS
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RP_SPI_CS
 
+set_location_assignment PIN_B8 -to RX_LIDAR_PIN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to RX_LIDAR_PIN
+
+set_global_assignment -name VERILOG_FILE v/lidar_driver.v
 set_global_assignment -name VERILOG_FILE v/rpi_spi_interface.v
 set_global_assignment -name SDC_FILE DE0_NANO_G_Sensor.sdc
 set_global_assignment -name QIP_FILE spipll.qip

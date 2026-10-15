@@ -1,0 +1,29 @@
+# Mecanum robot with JGB37-520 encoder motors, encoders read by the DE0-Nano
+# (fpga/sensors_udp). Set these for your robot:
+udp_mecanum_odom:
+  ros__parameters:
+    port: 1026
+
+    # Encoder counts per wheel turn (x4 decoding): 11 pulses x 4 edges x 30 (gearbox)
+    # = 1320 for the JGB37-520 12 V 330 RPM. One hand-turned wheel turn read
+    # 1.593..1.6 turns at 827.2, i.e. ~1320. For the exact value: mark a wheel, run
+    # ethernet_tx_paket/soft/encoder_view.py, turn the wheel exactly 10 turns by hand
+    # and divide its "since start" count by 10.
+    counts_per_rev: 1320.0
+
+    wheel_radius: 0.040        # m (80 mm wheels: measure yours)
+    half_length: 0.100         # m, robot centre to the front axle (lx)
+    half_width: 0.100          # m, robot centre to the middle of a wheel, sideways (ly)
+
+    # Which encoder input (0..3, see the QSF / JP2 pins) is on each wheel:
+    #                  [front-left, front-right, rear-left, rear-right]
+    encoder_for_wheel: [0, 1, 2, 3]
+    # +1 or -1 so that every wheel counts up when the robot drives forward
+    # (push the robot forward by hand with encoder_view.py running; the motors on
+    # the right usually face the other way, so they count down: give them -1)
+    wheel_signs: [1, 1, 1, 1]
+
+    odom_frame: odom
+    base_frame: base_link
+    publish_tf: true           # odom -> base_link
+    velocity_window: 0.05      # s of FPGA time used for the wheel speeds

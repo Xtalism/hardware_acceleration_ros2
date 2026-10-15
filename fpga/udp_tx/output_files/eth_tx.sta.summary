@@ -1,0 +1,65 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'rmii_clk'
+Slack : 10.389
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'rmii_clk'
+Slack : 0.357
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'rmii_clk'
+Slack : 18.067
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'rmii_clk'
+Slack : 1.285
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'rmii_clk'
+Slack : 9.500
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'rmii_clk'
+Slack : 11.072
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'rmii_clk'
+Slack : 0.311
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'rmii_clk'
+Slack : 18.271
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'rmii_clk'
+Slack : 1.173
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'rmii_clk'
+Slack : 9.499
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'rmii_clk'
+Slack : 12.684
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'rmii_clk'
+Slack : 0.186
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'rmii_clk'
+Slack : 18.872
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'rmii_clk'
+Slack : 0.715
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'rmii_clk'
+Slack : 9.212
+TNS   : 0.000
+
+------------------------------------------------------------
