@@ -1,6 +1,7 @@
 # ros2 launch fpga_udp_sensors imu.launch.py [rviz:=false] [port:=1024]
 # ADXL345 samples from the FPGA (fpga/gsensor_udp or fpga/sensors_udp) on /imu/data.
-# Without RViz2 this is the same as: ros2 run fpga_udp_sensors udp_imu_node
+# Node /fpga/udp/imu. Without RViz2 you can also: ros2 run fpga_udp_sensors udp_imu_node
+# (same topic, but the node is then /udp_imu)
 # parent_frame / position: where imu_link sits (sensors.launch.py puts it on the robot).
 from typing import List
 
@@ -22,7 +23,10 @@ def generate_launch_description():
         Node(
             package='fpga_udp_sensors',
             executable='udp_imu_node',
-            name='udp_imu',
+            name='imu',
+            namespace='fpga/udp',
+            # the namespace is only for the node: keep the standard topic name
+            remappings=[('imu/data', '/imu/data')],
             output='screen',
             parameters=[{
                 'port': ParameterValue(LaunchConfiguration('port'), value_type=int),

@@ -9,7 +9,8 @@
 #     by hand moves it too); move:=false keeps the robot in place and only turns
 #     the wheels, e.g. while testing a single encoder
 # The model's wheel size and positions come from the same robot.yaml as the odometry.
-# Odometry only (no robot model, no RViz2):
+# Node /fpga/udp/mecanum_odom; topics /odom, /wheel_states, /wheel_markers.
+# Odometry only (no robot model, no RViz2; the node is then /udp_mecanum_odom):
 #   ros2 run fpga_udp_sensors udp_mecanum_odom_node --ros-args --params-file \
 #     $(ros2 pkg prefix fpga_udp_sensors)/share/fpga_udp_sensors/config/robot.yaml
 import os
@@ -52,7 +53,7 @@ def robot_urdf(p):
 def nodes(context):
     params_file = LaunchConfiguration('params').perform(context)
     with open(params_file) as f:
-        p = yaml.safe_load(f)['udp_mecanum_odom']['ros__parameters']
+        p = yaml.safe_load(f)['/**']['ros__parameters']
     share = get_package_share_directory('fpga_udp_sensors')
     move = LaunchConfiguration('move').perform(context).lower() in ('true', '1', 'yes')
     fixed = [] if move else [
@@ -67,9 +68,13 @@ def nodes(context):
         Node(
             package='fpga_udp_sensors',
             executable='udp_mecanum_odom_node',
-            name='udp_mecanum_odom',
+            name='mecanum_odom',
+            namespace='fpga/udp',
             output='screen',
             parameters=[params_file, {'publish_tf': move}],
+            # the namespace is only for the node: keep the standard topic names
+            remappings=[('odom', '/odom'), ('wheel_states', '/wheel_states'),
+                        ('wheel_markers', '/wheel_markers')],
         ),
         Node(
             package='robot_state_publisher',

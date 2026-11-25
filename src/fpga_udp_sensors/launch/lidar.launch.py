@@ -1,6 +1,7 @@
 # ros2 launch fpga_udp_sensors lidar.launch.py [rviz:=false] [range_min:=0.3] [port:=1025]
 # LD19 scans from the FPGA (fpga/ld19_udp or fpga/sensors_udp) on /scan.
-# Without RViz2 this is the same as: ros2 run fpga_udp_sensors udp_ld19_node
+# Node /fpga/udp/ld19. Without RViz2 you can also: ros2 run fpga_udp_sensors udp_ld19_node
+# (same topic, but the node is then /udp_ld19)
 # range_min hides anything closer, e.g. the board and cables right next to the lidar.
 # parent_frame / position: where laser_link sits (sensors.launch.py puts it on the robot).
 from typing import List
@@ -24,7 +25,10 @@ def generate_launch_description():
         Node(
             package='fpga_udp_sensors',
             executable='udp_ld19_node',
-            name='udp_ld19',
+            name='ld19',
+            namespace='fpga/udp',
+            # the namespace is only for the node: keep the standard topic name
+            remappings=[('scan', '/scan')],
             output='screen',
             parameters=[{
                 'port': ParameterValue(LaunchConfiguration('port'), value_type=int),

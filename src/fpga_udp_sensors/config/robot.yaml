@@ -1,6 +1,6 @@
-# Mecanum robot with JGB37-520 encoder motors, encoders read by the DE0-Nano
-# (fpga/sensors_udp). Set these for your robot:
-udp_mecanum_odom:
+# /** = whichever node this file is given to: the launch files give it to
+# /fpga/udp/mecanum_odom (and encoders.launch.py reads the robot size from it)
+/**:
   ros__parameters:
     port: 1026
 
@@ -11,9 +11,9 @@ udp_mecanum_odom:
     # and divide its "since start" count by 10.
     counts_per_rev: 1320.0
 
-    wheel_radius: 0.040        # m (80 mm wheels: measure yours)
-    half_length: 0.100         # m, robot centre to the front axle (lx)
-    half_width: 0.100          # m, robot centre to the middle of a wheel, sideways (ly)
+    wheel_radius: 0.040 # m (80 mm wheels: measure yours)
+    half_length: 0.100 # m, robot centre to the front axle (lx)
+    half_width: 0.100 # m, robot centre to the middle of a wheel, sideways (ly)
 
     # Which encoder input (0..3, see the QSF / JP2 pins) is on each wheel:
     #                  [front-left, front-right, rear-left, rear-right]
@@ -25,5 +25,5 @@ udp_mecanum_odom:
 
     odom_frame: odom
     base_frame: base_link
-    publish_tf: true           # odom -> base_link
-    velocity_window: 0.05      # s of FPGA time used for the wheel speeds
+    publish_tf: true # odom -> base_link
+    velocity_window: 0.05 # s of FPGA time used for the wheel speeds
